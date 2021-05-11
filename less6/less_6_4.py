@@ -11,11 +11,11 @@
 # Выполните вызов методов и также покажите результат.
 
 class Car:
-    def __init__(self, speed, color, name, is_police):
+    def __init__(self, speed, color, name, is_police=False):
         self.speed = speed
         self.color = color
         self.name = name
-        self.is_police = is_police
+        self.is_police = 'ДА' if is_police else 'НЕТ'
 
     def go(self):
         print('Машина поехала')
@@ -26,4 +26,34 @@ class Car:
     def turn(self, direction):
         print(f'Машина поернула на {direction}')
 
+    def show_speed(self):
+        print(f'Скорость атомобиля {self.speed}')
 
+
+class TownCar(Car):
+    def show_speed(self):
+        print(f'Скорость атомобиля {self.speed}'
+              if self.speed < 60 else f'Скорость атомобиля {self.speed} превышает 60')
+
+
+class SportCar(Car):
+    pass
+
+
+class WorkCar(Car):
+    def show_speed(self):
+        print(f'Скорость атомобиля {self.speed}'
+              if self.speed < 40 else f'Скорость атомобиля {self.speed} превышает 40')
+
+
+class PoliceCar(Car):
+    pass
+
+
+police = PoliceCar(80, 'black', 'Audi', True)
+work = WorkCar(50, 'blue', 'Ford')
+police.show_speed()
+print(police.is_police)
+work.turn('Право')
+print(work.is_police)
+work.show_speed()
