@@ -47,10 +47,11 @@ class WorkCar(Car):
 
 
 class PoliceCar(Car):
-    pass
+    def __init__(self, speed, color, name, is_police=True):
+        super().__init__(speed, color, name, is_police)
 
 
-police = PoliceCar(80, 'black', 'Audi', True)
+police = PoliceCar(80, 'black', 'Audi')
 work = WorkCar(50, 'blue', 'Ford')
 police.show_speed()
 print(police.is_police)
