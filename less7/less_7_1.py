@@ -14,3 +14,25 @@
 class Matrix:
     def __init__(self, matrix):
         self.matrix = matrix
+
+    def __str__(self):
+        for i in range(len(self.matrix)):
+            print()
+            for j in range(len(self.matrix[0])):
+                print(self.matrix[i][j], end=' ')
+        return ''
+
+    def __add__(self, other):
+        res = []
+        for i in range(len(self.matrix)):
+            res.append([])
+            for j in range(len(self.matrix[0])):
+                res[i].append(self.matrix[i][j] + other.matrix[i][j])
+        return Matrix(res)
+
+
+m1 = Matrix([[1, 2, 3], [3, 2, 1], [4, 5, 6]])
+m2 = Matrix([[3, 2, 2], [-3, -2, -1], [1, 1, 1]])
+print(m1)
+print(m2)
+print(m1 + m2)
